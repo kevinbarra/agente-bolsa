@@ -1,0 +1,42 @@
+data_acquisition.py
+Propósito: Este archivo se encarga de adquirir los datos históricos del par de divisas USD/MXN desde Yahoo Finance.
+Función principal: get_data_from_yahoo(ticker, start_date, end_date)
+Utiliza la biblioteca yfinance para descargar datos entre las fechas especificadas para el ticker dado.
+Retorna un DataFrame de Pandas con los datos históricos.
+
+data_preprocessing.py
+Propósito: Este archivo maneja la limpieza y preprocesamiento de los datos descargados.
+Función principal: preprocess_data(data)
+Elimina cualquier fila con valores faltantes.
+Selecciona y conserva solo la columna 'Close', que representa el precio de cierre diario.
+Retorna el DataFrame preprocesado.
+
+analytic_models.py
+Propósito: Este archivo define dos modelos analíticos basados en medias móviles.
+Funciones principales:
+moving_average(data, window=14): Calcula la media móvil simple para la columna 'Close' del DataFrame.
+exponential_moving_average(data, window=14): Calcula la media móvil exponencial para la columna 'Close' del DataFrame.
+
+machine_learning.py
+Propósito: Este archivo maneja la construcción, entrenamiento y evaluación del modelo de regresión lineal utilizando Scikit-learn.
+Función principal: train_and_predict(data)
+Convierte los datos en un problema de aprendizaje supervisado.
+Divide los datos en conjuntos de entrenamiento y prueba.
+Entrena un modelo de regresión lineal.
+Realiza predicciones y evalúa el error cuadrático medio.
+Retorna las predicciones y el error.
+
+interface.py
+Propósito: Este archivo interpreta y combina los resultados de los modelos analíticos y de aprendizaje automático.
+Función principal: interpret_results(ma, ema, predictions)
+Analiza las tendencias basadas en medias móviles (alcista o bajista).
+Analiza las predicciones del modelo de regresión lineal en relación con las medias móviles.
+Retorna una interpretación textual de los resultados.
+
+main.py
+Propósito: Este archivo sirve como punto de entrada principal para el programa y une todas las partes anteriores.
+Función principal: main()
+Define las fechas de referencia y el ticker de interés.
+Obtiene y preprocesa los datos.
+Utiliza modelos analíticos y de aprendizaje automático para analizar los datos.
+Interpreta y muestra los resultados al usuario.
